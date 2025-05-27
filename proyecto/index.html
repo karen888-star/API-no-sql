@@ -1,45 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Potter Database</title>
-    <!-- Solo un archivo CSS combinado -->
-    <link rel="stylesheet" href="/proyecto/src/app.css">
-    <link rel="stylesheet" href="/proyecto/src/style.css">
+  <meta charset="UTF-8" />
+  <title>App Vanilla</title>
+  <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-    <header>
-        <nav class="main-nav">
-            <div class="nav-brand">
-                <h1>Harry Potter </h1>
-            </div>
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Buscar...">
-                <select id="categorySelect">
-                    <option value="characters">Personajes</option>
-                    <option value="books">Libros</option>
-                    <option value="movies">Películas</option>
-                    <option value="spells">Hechizos</option>
-                </select>
-                <button onclick="performSearch()" class="search-button">
-                    <i class="fas fa-search"></i> Buscar
-                </button>
-            </div>
-            <div class="nav-menu">
-                <button onclick="showCharacters()" class="nav-button">Personajes</button>
-                <button onclick="showBooks()" class="nav-button">Libros</button>
-                <button onclick="showMovies()" class="nav-button">Películas</button>
-                <button onclick="showSpells()" class="nav-button">Hechizos</button>
-                <button onclick="showProfile()" class="nav-button">Perfil</button>
-            </div>
-        </nav>
-    </header>
-    <main id="main-content">
-        <!-- El contenido dinámico aparecerá aquí -->
-    </main>
-    <!-- Solo un archivo JS combinado -->
-    <script src="/proyecto/src/componentes/home.js"></script>
-    <script type="module" src="/proyecto/src/main.js"></script>
+  <div id="menu"></div>
+  <div id="app">Cargando...</div>
+
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@ export default async function mostrarHome() {
   const app = document.getElementById("app");
 
   // Estilo general
-  app.innerHTML = `
+  app.innerHTML = `background-color: 
     <h1 style="text-align: center; font-family: 'Georgia', serif; color: #6a0dad; font-size: 2.5rem;">🎬 Harry Potter Movies</h1>
     <div id="lista" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; padding: 20px;"></div>
   `;
@@ -10,7 +10,8 @@ export default async function mostrarHome() {
   const lista = document.getElementById("lista");
 
   try {
-    const res = await fetch("https://api.potterdb.com/v1/");
+    const res = await fetch("https://api.potterdb.com/v1/movies"
+    );
     
     const json = await res.json();
     const movies = json.data;
