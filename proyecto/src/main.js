@@ -1,12 +1,25 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebaseConfig.js';
 
-import  mostrarHome from './componentes/home.js';
-import  mostrarOriginal from './componentes/original.js';
-import  mostrarPerfil from './componentes/perfil.js';
-import  mostrarLogout from './componentes/logout.js';
-import  mostrarLogin from './componentes/login.js';
-import  mostrarRegistro from './componentes/registro.js';
+import mostrarHome from './componentes/home.js';
+import mostrarPerfil from './componentes/perfil.js';
+import mostrarLogout from './componentes/logout.js';
+import mostrarLogin from './componentes/login.js';
+import mostrarRegistro from './componentes/registro.js';
+import iniciarJuegoOriginal from './componentes/original.js';
+
+async function lanzarJuego() {
+  const resultado = await iniciarJuegoOriginal();
+  if (resultado) {
+    console.log("Usuario:", resultado.nombre);
+    console.log("Casa:", resultado.casa);
+    
+    document.getElementById("contenido").innerHTML = `
+      <h2>¡Bien hecho, ${resultado.nombre}!</h2>
+      <p>Tu casa es <strong>${resultado.casa.toUpperCase()}</strong> 🧙‍♂️</p>
+    `;
+  }
+}
 
 function renderMenu(usuario) {
   const menu = document.getElementById("menu");
@@ -17,7 +30,7 @@ function renderMenu(usuario) {
   if (usuario) {
     botones = [
       { texto: "Home", fn: mostrarHome },
-      { texto: "Original", fn: mostrarOriginal },
+     { texto: "Original", fn: iniciarJuegoOriginal }, // ✅ Aquí se lanza el juego
       { texto: "Perfil", fn: mostrarPerfil },
       { texto: "Logout", fn: mostrarLogout },
     ];
@@ -35,7 +48,6 @@ function renderMenu(usuario) {
     menu.appendChild(btn);
   });
 }
-
 
 onAuthStateChanged(auth, (user) => {
   renderMenu(user);
