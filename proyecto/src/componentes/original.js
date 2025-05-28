@@ -1,3 +1,7 @@
+import { db } from '../firebaseConfig.js';
+import { collection, addDoc } from 'firebase/firestore';
+
+
 export default function iniciarJuegoOriginal() {
   const contenido = document.getElementById("contenido");
   contenido.innerHTML = ""; // Limpiar antes de empezar
@@ -101,13 +105,17 @@ export default function iniciarJuegoOriginal() {
         <h2>¡Felicidades, ${nombre}!</h2>
         <p>Tu casa de Hogwarts es <strong>${casaGanadora.toUpperCase()}</strong> 🏰</p>
       `;
+try {
+  await addDoc(collection(db, 'resultadosTest'), {
+    nombre,
+    casa: casaGanadora,
+    fecha: new Date()
+  });
+  console.log('Resultado guardado en Firestore');
+} catch (error) {
+  console.error('Error guardando resultado:', error);
+}
 
-      const db = await cargarFirebase();
-      const id = Date.now();
-      await db.ref('usuarios/' + id).set({
-        nombre,
-        casa: casaGanadora
-      });
     };
 
     mostrarPregunta();
