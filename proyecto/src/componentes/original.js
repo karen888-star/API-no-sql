@@ -47,7 +47,7 @@ export default function iniciarJuegoOriginal() {
   // Paso 1: Preguntar nombre
   const formNombre = document.createElement("div");
   formNombre.innerHTML = `
-    <h2>Bienvenido al test de Hogwarts 🧙‍♂️</h2>
+    <h2>🪄🔮 Bienvenido al test de Hogwarts 🪄🔮</h2>
     <label>¿Cuál es tu nombre?</label><br>
     <input type="text" id="nombreUsuario"><br>
     <button id="comenzarTest">Comenzar</button>
@@ -103,7 +103,7 @@ export default function iniciarJuegoOriginal() {
 
       contenido.innerHTML = `
         <h2>¡Felicidades, ${nombre}!</h2>
-        <p>Tu casa de Hogwarts es <strong>${casaGanadora.toUpperCase()}</strong> 🏰</p>
+        <p>Tu casa de Hogwarts es <strong>${casaGanadora.toUpperCase()}</strong> 🪄🏰🎩</p>
       `;
 try {
   await addDoc(collection(db, 'resultadosTest'), {
