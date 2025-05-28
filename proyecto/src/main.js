@@ -24,13 +24,18 @@ async function lanzarJuego() {
 function renderMenu(usuario) {
   const menu = document.getElementById("menu");
   menu.innerHTML = "";
-
+  
+function limpiarTodoY(fn) {
+  document.getElementById('app').innerHTML = '';
+  document.getElementById('contenido').innerHTML = '';
+  fn();
+}
   let botones = [];
 
   if (usuario) {
     botones = [
       { texto: "Home", fn: mostrarHome },
-     { texto: "Original", fn: iniciarJuegoOriginal }, // ✅ Aquí se lanza el juego
+      { texto: "Original", fn: () => limpiarTodoY(iniciarJuegoOriginal) },
       { texto: "Perfil", fn: mostrarPerfil },
       { texto: "Logout", fn: mostrarLogout },
     ];
@@ -56,4 +61,15 @@ onAuthStateChanged(auth, (user) => {
   } else {
     mostrarLogin();
   }
-});
+
+  function limpiarTodoY(fn) {
+  document.getElementById('contenido').innerHTML = '';
+  document.getElementById('app').innerHTML = '';
+  fn();
+}
+  document.getElementById('lanzarJuego').onclick = () => {
+    limpiarTodoY(lanzarJuego);
+  };
+}
+);
+

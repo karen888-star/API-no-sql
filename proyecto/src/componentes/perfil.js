@@ -2,6 +2,9 @@ import { auth, db } from '../firebaseConfig.js';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 export default async function mostrarPerfil() {
+  // ✅ Limpiar contenido anterior (como el juego)
+  document.getElementById('contenido').innerHTML = '';
+
   const app = document.getElementById('app');
   app.innerHTML = `<h2>Perfil del Usuario</h2><p id="cargando">Cargando...</p>`;
 
@@ -21,7 +24,6 @@ export default async function mostrarPerfil() {
 
   const { nombre = '', fecha = '', telefono = '' } = docSnap.data();
 
-  // Renderizar formulario
   app.innerHTML = `
     <h2>Perfil del Usuario</h2>
     <div style="display: flex; flex-direction: column; gap: 10px; max-width: 400px;">
